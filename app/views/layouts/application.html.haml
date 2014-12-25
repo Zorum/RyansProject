@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title myBlog
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{:href => "#"} myBlog
+          %ul.nav
+            %li= link_to "Entries", entries_path
+    .container
+      %p.notice= notice
+      %p.alert= alert
+      = yield
+
