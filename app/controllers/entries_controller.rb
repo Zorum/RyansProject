@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_filter :prepare_categories 
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /entries
@@ -15,6 +16,7 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
+    @categories = Category.all
   end
 
   # GET /entries/1/edit
@@ -69,6 +71,14 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params.require(:entry).permit(:title, :entry)
+      params.require(:entry).permit(:category_id, :title, :entry)
+    end
+
+    # add the @categories = category.All to the before action so avail for all actions
+
+    private
+
+    def prepare_categories
+      @categories = Category.all
     end
 end

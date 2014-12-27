@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Category Name:
+  = @category.name
+
+%p
+  %b Entries:
+  - @category.entries.each do |entry|
+    %br/
+    = entry.title
+
+%p
+  %strong Add a new entry:
+= form_for @entry do |f|
+  = f.hidden_field :category_id, :value => @category.id
+  = f.label :title, 'Title'
+  \: #{f.text_field :title}
+  %br/
+  = f.label :entry, 'Entry'
+  \: #{f.text_field :entry}
+  %br/
+  = f.submit 'Add Entry'
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

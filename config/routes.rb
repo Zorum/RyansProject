@@ -1,4 +1,8 @@
 MyBlog::Application.routes.draw do
+  resources :options
+
+  resources :categories
+
   resources :entries
   root to: 'entries#index'
 

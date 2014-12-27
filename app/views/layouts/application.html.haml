@@ -11,9 +11,8 @@
         .container
           %a.brand{:href => "#"} myBlog
           %ul.nav
+            %li= link_to "Categories", categories_path
             %li= link_to "Entries", entries_path
     .container
-      %p.notice= notice
-      %p.alert= alert
       = yield
 
